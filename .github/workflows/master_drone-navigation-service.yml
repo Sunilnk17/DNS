@@ -1,0 +1,51 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - drone-navigation-service
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://mcr.microsoft.com/
+        username: ${{ secrets.AzureAppService_ContainerUsername_aa0c36fbd915462281d71dc3e0d14564 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_c821d4e7969e4fc4b2fa5d6638278d72 }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_aa0c36fbd915462281d71dc3e0d14564 }}/appsvc/staticsite:${{ github.sha }}
+        file: ./Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'drone-navigation-service'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_dd5bd642aa264e329cd9a44554400890 }}
+        images: 'mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_aa0c36fbd915462281d71dc3e0d14564 }}/appsvc/staticsite:${{ github.sha }}'
