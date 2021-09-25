@@ -5,17 +5,17 @@ package request
 type LocationRequest struct {
 	// a location request
 	// in: body
-	SectorId  string `json:"sectorId" validate:"required" conform:"trim,omitempty"`
-	CompanyId string `json:"companyId" validate:"required" conform:"trim,omitempty"`
+	SectorId  string `json:"sectorId" conform:"trim,omitempty"`
+	CompanyId string `json:"companyId" conform:"trim,omitempty"`
 	X         string `json:"x" validate:"required" conform:"trim,omitempty"`
 	Y         string `json:"y" validate:"required" conform:"trim,omitempty"`
 	Z         string `json:"z" validate:"required" conform:"trim,omitempty"`
 	Vel       string `json:"vel" validate:"required" conform:"trim,omitempty"`
 }
 
-type LocationStringtoFloatRequest struct {
+type LocationStringToFloatRequest struct {
 	SectorId  float64 `json:",string"`
-	CompanyId string  `json:"companyId" validate:"required" conform:"trim,omitempty"`
+	CompanyId string  `json:"companyId" conform:"trim,omitempty"`
 	X         float64 `json:",string"`
 	Y         float64 `json:",string"`
 	Z         float64 `json:",string"`

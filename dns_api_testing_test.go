@@ -1,8 +1,8 @@
 package main
 
 import (
-	"drone-navigation-service/app/api"
-	"drone-navigation-service/app/initializer"
+	"drone-navigation-service-master/app/api"
+	"drone-navigation-service-master/app/initializer"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -10,21 +10,21 @@ import (
 
 func TestGetLocation(t *testing.T) {
 	SetConfig()
-	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/location?sectorId=123456&companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
+	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/sectors/123456/drones?companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusOK, response.Code)
 }
 
 func TestGetLocationWithNotRequiredParams(t *testing.T) {
 	SetConfig()
-	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/location?sectorId=123456&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
+	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/sectors/123456/drones?&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusBadRequest, response.Code)
 }
 
 func TestGetLocationWithNotPermittedMethod(t *testing.T) {
 	SetConfig()
-	req, _ := http.NewRequest("PUT", "http://localhost:5000/api/v1/location?sectorId=123456&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
+	req, _ := http.NewRequest("PUT", "http://localhost:5000/api/v1/sectors/123456/drones?x=123.12&y=456.56&z=789.89&vel=20.0", nil)
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusMethodNotAllowed, response.Code)
 }
@@ -38,14 +38,14 @@ func TestGetLocationWithInvalidAPI(t *testing.T) {
 
 func TestGetLocationWithInvalidSectorId(t *testing.T) {
 	SetConfig()
-	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/location?sectorId=12345&companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
+	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/sectors/1234567/drones?companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0", nil)
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusBadRequest, response.Code)
 }
 
 func TestGetLocationWithDecodeError(t *testing.T) {
 	SetConfig()
-	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/location?sectorId=12345&companyId=atlas&x=test&y=456.56&z=789.89&vel=20.0", nil)
+	req, _ := http.NewRequest("GET", "http://localhost:5000/api/v1/sectors/123456/drones?companyId=atlas&x=test&y=456.56&z=789.89&vel=20.0", nil)
 	response := executeRequest(req)
 	checkResponseCode(t, http.StatusBadRequest, response.Code)
 }

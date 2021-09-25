@@ -1,11 +1,12 @@
 package controller
 
 import (
-	"drone-navigation-service/app/api/preprocessor"
-	"drone-navigation-service/app/config/locales/local_config"
-	"drone-navigation-service/app/model/request"
-	"drone-navigation-service/app/processor"
-	"drone-navigation-service/app/response_handler"
+	"drone-navigation-service-master/app/api/preprocessor"
+	"drone-navigation-service-master/app/config/locales/local_config"
+	"drone-navigation-service-master/app/model/request"
+	"drone-navigation-service-master/app/processor"
+	"drone-navigation-service-master/app/response_handler"
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
@@ -67,15 +68,18 @@ import (
 func GetLocation(w http.ResponseWriter, r *http.Request) {
 
 	var locationRequest request.LocationRequest
-	var params request.LocationStringtoFloatRequest
+	var params request.LocationStringToFloatRequest
 
+	sectorId := mux.Vars(r)["sectorId"]
 	err := preprocessor.DecodeAndValidateRequestParams(r, &locationRequest)
 
-	if err != nil {
+	if err != nil || sectorId == "" {
 		msg := local_config.GetTranslationMessage(r.Context(), "invalid_request_params")
 		response_handler.WriteErrorResponseAsJson(w, r, http.StatusBadRequest, msg)
 		return
 	}
+
+	locationRequest.SectorId = sectorId
 
 	_, err = preprocessor.BindAndUnMarshallRequest(r, &locationRequest, &params)
 	if err != nil {

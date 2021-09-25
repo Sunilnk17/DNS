@@ -61,16 +61,15 @@ The API is designed by presuming sectorID (Integer) is known to the company and 
 
 ## API
 ```
-curl -X GET 'http://localhost:5010/api/v1/location?sectorId=123456&companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0'
+curl -X GET 'http://localhost:5010/api/v1/sectors/{sectorId}/drones?companyId=atlas&x=123.12&y=456.56&z=789.89&vel=20.0'
  ```
 ## API Params needed
-    - sectorId
     - companyId
     - x
     - y
     - z
     - vel
-###### Note: CompanyID is needed because we can group the response object to the company they expect and also it is just a config change to suppport for future companies.
+###### Note: CompanyID is added as part of the extension to the problem to support different response field names. 
   
 ## API Response
     - code

@@ -22,7 +22,7 @@ func GenerateNewRequestId(r *http.Request) *http.Request {
 	return r.WithContext(ctx)
 }
 
-func GetRequestIDFromRequest(r *http.Request) string {
+func GetRequestIdFromRequest(r *http.Request) string {
 	if r == nil {
 		return "-"
 	}

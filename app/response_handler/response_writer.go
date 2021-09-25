@@ -2,8 +2,9 @@ package response_handler
 
 import (
 	"context"
-	"drone-navigation-service/app/config/locales/local_config"
-	"drone-navigation-service/dns_middleware"
+	"drone-navigation-service-master/app/config/locales/local_config"
+	"drone-navigation-service-master/dns_middleware"
+
 	"encoding/json"
 	"log"
 	"net/http"
@@ -11,13 +12,13 @@ import (
 
 func WriteResponseMapAsJson(w http.ResponseWriter, r *http.Request, statusCode int, data map[string]interface{}) {
 	log.Print(r.Context(), "Writing response for the request")
-	update(data, statusCode, dns_middleware.GetRequestIDFromRequest(r))
+	update(data, statusCode, dns_middleware.GetRequestIdFromRequest(r))
 	js, err := json.Marshal(data)
 	if err != nil {
 		statusCode = http.StatusInternalServerError
 		message := local_config.GetTranslationMessage(r.Context(), "something_went_wrong")
 		data = getErrorData(message)
-		update(data, statusCode, dns_middleware.GetRequestIDFromRequest(r))
+		update(data, statusCode, dns_middleware.GetRequestIdFromRequest(r))
 		js, _ = json.Marshal(data)
 	}
 	addCustomHeaders(w)

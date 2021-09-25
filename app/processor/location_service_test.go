@@ -2,8 +2,8 @@ package processor
 
 import (
 	"context"
-	"drone-navigation-service/app/config"
-	"drone-navigation-service/app/model/request"
+	"drone-navigation-service-master/app/config"
+	"drone-navigation-service-master/app/model/request"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -29,9 +29,9 @@ func getLocationRequest() request.LocationRequest {
 	return locationRequest
 }
 
-func getLocationtoFloatRequest() request.LocationStringtoFloatRequest {
+func getLocationToFloatRequest() request.LocationStringToFloatRequest {
 
-	locationRequest := request.LocationStringtoFloatRequest{}
+	locationRequest := request.LocationStringToFloatRequest{}
 	locationRequest.SectorId = 1234
 	locationRequest.CompanyId = "atlas"
 	locationRequest.Vel = 1.2
@@ -48,7 +48,7 @@ func TestGetNewLocationService(t *testing.T) {
 
 	service := GetNewLocationService()
 
-	_, err := service.GetLocation(context.TODO(), getLocationtoFloatRequest(), getLocationRequest())
+	_, err := service.GetLocation(context.TODO(), getLocationToFloatRequest(), getLocationRequest())
 
 	assert.Nil(t, err)
 
@@ -60,7 +60,7 @@ func TestGetNewLocationServiceForInvalidCompany(t *testing.T) {
 
 	service := GetNewLocationService()
 
-	_, err := service.GetLocation(context.TODO(), request.LocationStringtoFloatRequest{SectorId: 12}, request.LocationRequest{SectorId: "12"})
+	_, err := service.GetLocation(context.TODO(), request.LocationStringToFloatRequest{SectorId: 12}, request.LocationRequest{SectorId: "12"})
 
 	assert.NotNil(t, err)
 

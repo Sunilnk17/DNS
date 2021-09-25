@@ -6,3 +6,5 @@ sectors:
     companies:
       - name: "atlas"
         response: "loc"
+      - name: "atlas-new"
+        response: "location"

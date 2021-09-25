@@ -6,14 +6,11 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	models "drone-navigation-service-master/models"
 	"fmt"
-	"io"
-
 	"github.com/go-openapi/runtime"
-
 	strfmt "github.com/go-openapi/strfmt"
-
-	models "drone-navigation-service/models"
+	"io"
 )
 
 // GetLocationReader is a Reader for the GetLocation structure.

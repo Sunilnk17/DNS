@@ -63,7 +63,7 @@ func GetReqParamsDecoder() *schema.Decoder {
 }
 
 func getConfigFile() string {
-	return "app/config/" + os.Getenv("ENV") + ".yml"
+	return "app/config/dev.yml"
 }
 
 func InitializeDecoderAndValidator() {

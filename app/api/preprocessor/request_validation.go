@@ -2,7 +2,7 @@ package preprocessor
 
 import (
 	"context"
-	"drone-navigation-service/app/config"
+	"drone-navigation-service-master/app/config"
 	"encoding/json"
 	"github.com/leebenson/conform"
 	"gopkg.in/go-playground/validator.v9"
@@ -51,7 +51,6 @@ func BindRequest(r *http.Request, structPointer interface{}) error {
 		return err
 	}
 	var decoderError error
-
 	if r.Method == http.MethodGet {
 		decoderError = config.GetReqParamsDecoder().Decode(structPointer, r.Form)
 	}
