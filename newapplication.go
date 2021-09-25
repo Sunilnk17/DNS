@@ -1,9 +1,9 @@
 package main
 
 import (
-	"drone-navigation-service/app/api"
-	"drone-navigation-service/app/config"
-	"drone-navigation-service/app/initializer"
+	"drone-navigation-service-master/app/api"
+	"drone-navigation-service-master/app/config"
+	"drone-navigation-service-master/app/initializer"
 	"github.com/gorilla/handlers"
 	"log"
 	"net/http"
