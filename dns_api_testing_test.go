@@ -1,8 +1,8 @@
 package main
 
 import (
-	"drone-navigation-service-master/app/api"
-	"drone-navigation-service-master/app/initializer"
+	"drone-navigation-service/app/api"
+	"drone-navigation-service/app/initializer"
 	"net/http"
 	"net/http/httptest"
 	"testing"

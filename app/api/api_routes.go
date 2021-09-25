@@ -1,11 +1,12 @@
 package api
 
 import (
-	"drone-navigation-service-master/app/api/controller"
-	"drone-navigation-service-master/dns_middleware"
-	"github.com/gorilla/mux"
+	"drone-navigation-service/app/api/controller"
+	"drone-navigation-service/dns_middleware"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 const (

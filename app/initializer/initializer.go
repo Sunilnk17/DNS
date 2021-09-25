@@ -1,8 +1,8 @@
 package initializer
 
 import (
-	"drone-navigation-service-master/app/config"
-	"drone-navigation-service-master/app/config/locales/local_config"
+	"drone-navigation-service/app/config"
+	"drone-navigation-service/app/config/locales/local_config"
 	"log"
 )
 

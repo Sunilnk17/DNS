@@ -6,7 +6,7 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	models "drone-navigation-service-master/models"
+	models "drone-navigation-service/models"
 	"fmt"
 	"github.com/go-openapi/runtime"
 	strfmt "github.com/go-openapi/strfmt"

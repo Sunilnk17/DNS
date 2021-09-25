@@ -1,9 +1,9 @@
 package main
 
 import (
-	"drone-navigation-service-master/app/config"
-	"drone-navigation-service-master/client"
-	"drone-navigation-service-master/client/operations"
+	"drone-navigation-service/app/config"
+	"drone-navigation-service/client"
+	"drone-navigation-service/client/operations"
 	"fmt"
 )
 

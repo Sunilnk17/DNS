@@ -2,12 +2,12 @@ package preprocessor
 
 import (
 	"context"
-	"drone-navigation-service-master/app/config"
+	"drone-navigation-service/app/config"
 	"encoding/json"
-	"github.com/leebenson/conform"
-	"gopkg.in/go-playground/validator.v9"
 	"log"
 	"net/http"
+	"github.com/leebenson/conform"
+	"gopkg.in/go-playground/validator.v9"
 )
 
 func DecodeAndValidateRequestParams(r *http.Request, structPointer interface{}) error {

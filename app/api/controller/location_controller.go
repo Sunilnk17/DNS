@@ -1,13 +1,13 @@
 package controller
 
 import (
-	"drone-navigation-service-master/app/api/preprocessor"
-	"drone-navigation-service-master/app/config/locales/local_config"
-	"drone-navigation-service-master/app/model/request"
-	"drone-navigation-service-master/app/processor"
-	"drone-navigation-service-master/app/response_handler"
-	"github.com/gorilla/mux"
+	"drone-navigation-service/app/api/preprocessor"
+	"drone-navigation-service/app/config/locales/local_config"
+	"drone-navigation-service/app/model/request"
+	"drone-navigation-service/app/processor"
+	"drone-navigation-service/app/response_handler"
 	"net/http"
+	"github.com/gorilla/mux"
 )
 
 // swagger:operation GET /location getLocation

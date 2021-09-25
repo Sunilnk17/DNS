@@ -1,13 +1,14 @@
 package main
 
 import (
-	"drone-navigation-service-master/app/api"
-	"drone-navigation-service-master/app/config"
-	"drone-navigation-service-master/app/initializer"
-	"github.com/gorilla/handlers"
+	"drone-navigation-service/app/api"
+	"drone-navigation-service/app/config"
+	"drone-navigation-service/app/initializer"
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/gorilla/handlers"
 )
 
 func main() {

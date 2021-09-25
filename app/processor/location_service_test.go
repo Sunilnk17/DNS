@@ -2,10 +2,11 @@ package processor
 
 import (
 	"context"
-	"drone-navigation-service-master/app/config"
-	"drone-navigation-service-master/app/model/request"
-	"github.com/stretchr/testify/assert"
+	"drone-navigation-service/app/config"
+	"drone-navigation-service/app/model/request"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func getSectorConfig() []config.SectorConfig {

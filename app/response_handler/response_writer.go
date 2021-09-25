@@ -2,8 +2,8 @@ package response_handler
 
 import (
 	"context"
-	"drone-navigation-service-master/app/config/locales/local_config"
-	"drone-navigation-service-master/dns_middleware"
+	"drone-navigation-service/app/config/locales/local_config"
+	"drone-navigation-service/dns_middleware"
 
 	"encoding/json"
 	"log"

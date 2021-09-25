@@ -2,8 +2,8 @@ package processor
 
 import (
 	"context"
-	"drone-navigation-service-master/app/config"
-	"drone-navigation-service-master/app/model/request"
+	"drone-navigation-service/app/config"
+	"drone-navigation-service/app/model/request"
 	"errors"
 )
 
