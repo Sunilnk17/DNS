@@ -1,0 +1,203 @@
+{
+
+  "info": {
+    "description": "This documentation describes example APIs found under https://github.com/sunilnk17/dns-service",
+    "title": "Drone Navigation Service",
+    "contact": {
+      "name": "DNS TEAM",
+      "email": "sunilnk95@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "swagger": "2.0",
+  "paths": {
+    "/location": {
+      "get": {
+        "description": "Get Location",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "schemes": [
+          "http"
+        ],
+        "summary": "Get Location",
+        "operationId": "getLocation",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "sector id",
+            "name": "sector_id",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "company id",
+            "name": "company_id",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "z coordinate",
+            "name": "z",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "x coordinate",
+            "name": "x",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "y coordinate",
+            "name": "y",
+            "in": "query",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "velocity",
+            "name": "vel",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "genericModel",
+            "schema": {
+              "$ref": "#/definitions/genericModel"
+            }
+          },
+          "default": {
+            "description": "genericError",
+            "schema": {
+              "$ref": "#/definitions/genericError"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LocationStringtoFloatRequest": {
+      "type": "object",
+      "properties": {
+        "SectorId": {
+          "type": "number",
+          "format": "double"
+        },
+        "Vel": {
+          "type": "number",
+          "format": "double"
+        },
+        "X": {
+          "type": "number",
+          "format": "double"
+        },
+        "Y": {
+          "type": "number",
+          "format": "double"
+        },
+        "Z": {
+          "type": "number",
+          "format": "double"
+        },
+        "companyId": {
+          "type": "string",
+          "x-go-name": "CompanyId"
+        }
+      },
+      "x-go-package": "drone-navigation-service/app/model/request"
+    },
+    "genericError": {
+      "description": "Location Generic Error",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "error": {
+          "type": "string",
+          "x-go-name": "Error"
+        },
+        "request_id": {
+          "type": "string",
+          "x-go-name": "RequestId"
+        }
+      },
+      "x-go-name": "GenericError",
+      "x-go-package": "drone-navigation-service/app/model/request"
+    },
+    "genericModel": {
+      "description": "Location Generic Model",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Code"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-go-name": "Data"
+        },
+        "error": {
+          "type": "string",
+          "x-go-name": "Error"
+        },
+        "request_id": {
+          "type": "string",
+          "x-go-name": "RequestId"
+        }
+      },
+      "x-go-name": "GenericResponse",
+      "x-go-package": "drone-navigation-service/app/model/request"
+    },
+    "locationRequest": {
+      "description": "Get location Request",
+      "type": "object",
+      "properties": {
+        "companyId": {
+          "type": "string",
+          "x-go-name": "CompanyId"
+        },
+        "sectorId": {
+          "description": "a location request\nin: body",
+          "type": "string",
+          "x-go-name": "SectorId"
+        },
+        "vel": {
+          "type": "string",
+          "x-go-name": "Vel"
+        },
+        "x": {
+          "type": "string",
+          "x-go-name": "X"
+        },
+        "y": {
+          "type": "string",
+          "x-go-name": "Y"
+        },
+        "z": {
+          "type": "string",
+          "x-go-name": "Z"
+        }
+      },
+      "x-go-name": "LocationRequest",
+      "x-go-package": "drone-navigation-service/app/model/request"
+    }
+  }
+}

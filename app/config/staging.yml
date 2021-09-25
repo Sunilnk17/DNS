@@ -1,0 +1,8 @@
+server:
+  port: ":5000"
+
+sectors:
+  - id: "14567"
+    companies:
+      - name: "atlas"
+        response: "loc"
