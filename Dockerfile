@@ -9,10 +9,10 @@ RUN mkdir -p $GOPATH/src/drone-navigation-service
 COPY . $GOPATH/src/drone-navigation-service
 WORKDIR $GOPATH/src/drone-navigation-service
 
-RUN go build
-
 RUN dep ensure -vendor-only
 RUN rm -rf $GOPATH/src/github.com/cloudqwest/drone-navigation-service/testmain
+
+RUN go build
 
 ENV ENV=dev
 
